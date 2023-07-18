@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+}
+
+.mapPoint {
+  position: absolute;
+}
+
+.mapPoint:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+.mirrorHoriz {
+  transform: rotate(180deg);
+}
