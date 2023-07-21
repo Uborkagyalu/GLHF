@@ -1,14 +1,20 @@
-import React from "react";
-import { Grid } from "@mui/material";
+import React, { useContext } from "react";
+import { Box, Grid, IconButton } from "@mui/material";
 import CharacterPortrait from "../smallComponents/CharacterPortrait";
-import { useGetCharacter } from "../hooks/useGetCharacter";
 import { useCharacterStatsConfig } from "../configs/CharacterConfigs/useCharacterStatsConfig";
 import Text from "../smallComponents/Text";
 import ColoredStatBar from "../smallComponents/ColoredStatBar";
+import slot from "../img/slot2.png";
+import CharacterInventory from "../smallComponents/CharacterInventory";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { CharacterContext } from "../providers/characterProvider";
 
 const CharacterPanel = () => {
-  const character = useGetCharacter();
+  const { character } = useContext(CharacterContext);
   const characterStats = useCharacterStatsConfig({ character });
+
+  const [characterTab, setCharacterTab] = React.useState("inventory");
 
   return (
     <Grid
@@ -28,7 +34,34 @@ const CharacterPanel = () => {
         <Text variant={"h3"}>Character Information</Text>
       </Grid>
       <Grid item container xs={6}>
-        <Grid item container xs={1}></Grid>
+        <Grid item direction={"column"} alignItems={"center"} container xs={1}>
+          <Grid item>
+            <IconButton>
+              <Box
+                component="img"
+                sx={{
+                  height: "100%",
+                  width: "100%",
+                }}
+                alt="Inv"
+                src={slot}
+              />
+            </IconButton>
+          </Grid>
+          <Grid item>
+            <IconButton>
+              <Box
+                component="img"
+                sx={{
+                  height: "100%",
+                  width: "100%",
+                }}
+                alt="Skill"
+                src={slot}
+              />
+            </IconButton>
+          </Grid>
+        </Grid>
         <Grid
           item
           container
@@ -40,7 +73,14 @@ const CharacterPanel = () => {
         inset #ab9d7e 0 0 0 10px
        `,
           }}
-        ></Grid>
+          padding={"2px"}
+        >
+          {characterTab === "inventory" && (
+            <DndProvider backend={HTML5Backend}>
+              <CharacterInventory />
+            </DndProvider>
+          )}
+        </Grid>
       </Grid>
       <Grid item container xs={6}>
         <Grid
@@ -54,6 +94,7 @@ const CharacterPanel = () => {
         inset #ab9d7e 0 0 0 10px
        `,
           }}
+          padding={"2px"}
         >
           <CharacterPortrait />
           <Grid
@@ -79,30 +120,29 @@ const CharacterPanel = () => {
             </Grid>
           </Grid>
           <Grid
-          item
-          container
-          xs={12}
-          direction={"column"}
-          spacing={1}
-          padding={2}
-        >
-          {characterStats?.map((stat) => (
-            <Grid item container spacing={1} key={stat?.id}>
-              <Grid item xs={3}>
-                <Text variant={"h5"}>{stat?.text}</Text>
+            item
+            container
+            xs={12}
+            direction={"column"}
+            spacing={1}
+            padding={2}
+          >
+            {characterStats?.map((stat) => (
+              <Grid item container spacing={1} key={stat?.id}>
+                <Grid item xs={3}>
+                  <Text variant={"h5"}>{stat?.text}</Text>
+                </Grid>
+                <Grid item xs={6} container alignItems={"center"}>
+                  <ColoredStatBar stat={stat} />
+                </Grid>
+                <Grid item xs={3}>
+                  <Text variant={"h5"}>{`${stat?.current}/${stat?.max}`}</Text>
+                </Grid>
               </Grid>
-              <Grid item xs={6} container alignItems={"center"}>
-                <ColoredStatBar stat={stat} />
-              </Grid>
-              <Grid item xs={3}>
-                <Text variant={"h5"}>{`${stat?.current}/${stat?.max}`}</Text>
-              </Grid>
-            </Grid>
-          ))}
-        </Grid>
+            ))}
+          </Grid>
         </Grid>
         <Grid item container xs={1}></Grid>
-
       </Grid>
     </Grid>
   );

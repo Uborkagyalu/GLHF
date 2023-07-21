@@ -3,6 +3,7 @@ import React from "react";
 import { ThemeProvider } from "styled-components";
 import "./App.css";
 import Layout from "./Layouts/Layout";
+import CharacterProvider from "./providers/characterProvider";
 
 const theme = createTheme({
   typography: {
@@ -13,7 +14,9 @@ const theme = createTheme({
 function App({ main }) {
   return (
     <ThemeProvider theme={theme}>
-      <Layout main={main} />
+      <CharacterProvider>
+        <Layout main={main} />
+      </CharacterProvider>
     </ThemeProvider>
   );
 }

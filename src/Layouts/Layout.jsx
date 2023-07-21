@@ -44,9 +44,11 @@ const Layout = ({ main }) => {
           sx={{
             height: "100%",
             padding: "10px 10px 10px 0",
-            backgroundImage: `url(${paperBackground}) !important`,
-            backgroundRepeat: "no-repeat !important",
-            backgroundSize: "100% 100% !important",
+            backgroundColor: '#212121',
+            color: 'white'
+            // backgroundImage: `url(${paperBackground}) !important`,
+            // backgroundRepeat: "no-repeat !important",
+            // backgroundSize: "100% 100% !important",
           }}
           style={{
             paddingLeft: `calc(${layoutConstants()?.leftMenuWidth} + 10px)`,
