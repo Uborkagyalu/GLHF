@@ -25,6 +25,34 @@ const CharacterInventory = () => {
       : []),
   ];
 
+  const ItemSlotWrapper = ({
+    slotType,
+    id,
+    img,
+    height,
+    width,
+    children = undefined,
+  }) => (
+    <CharacterContext.Consumer>
+      {({ character: char, setCharacter: setChar }) => (
+        <ItemSlot
+          slotType={slotType}
+          id={id}
+          sx={{
+            width: width,
+            height: height,
+            backgroundImage: `url(${img}) !important`,
+            backgroundRepeat: "no-repeat !important",
+            backgroundSize: "100% 100% !important",
+          }}
+          children={children ? children : getEquipmentChildren(id)}
+          character={char}
+          setCharacter={setChar}
+        />
+      )}
+    </CharacterContext.Consumer>
+  );
+
   return (
     <Grid
       container
@@ -35,17 +63,12 @@ const CharacterInventory = () => {
       spacing={2}
     >
       <Grid item>
-        <ItemSlot
+        <ItemSlotWrapper
           slotType="equipment"
           id="head"
-          sx={{
-            width: "80px",
-            height: "80px",
-            backgroundImage: `url(${slot1}) !important`,
-            backgroundRepeat: "no-repeat !important",
-            backgroundSize: "100% 100% !important",
-          }}
-          children={getEquipmentChildren("head")}
+          img={slot1}
+          width={"80px"}
+          height={"80px"}
         />
       </Grid>
       <Grid
@@ -56,89 +79,59 @@ const CharacterInventory = () => {
         spacing={2}
       >
         <Grid item>
-          <ItemSlot
+          <ItemSlotWrapper
             slotType="equipment"
             id="mainHand"
-            sx={{
-              width: "80px",
-              height: "80px",
-              backgroundImage: `url(${slot1}) !important`,
-              backgroundRepeat: "no-repeat !important",
-              backgroundSize: "100% 100% !important",
-            }}
-            children={getEquipmentChildren("mainHand")}
+            img={slot1}
+            width={"80px"}
+            height={"80px"}
           />
         </Grid>
         <Grid item>
-          <ItemSlot
+          <ItemSlotWrapper
             slotType="equipment"
             id="torso"
-            sx={{
-              width: "80px",
-              height: "80px",
-              backgroundImage: `url(${slot1}) !important`,
-              backgroundRepeat: "no-repeat !important",
-              backgroundSize: "100% 100% !important",
-            }}
-            children={getEquipmentChildren("torso")}
+            img={slot1}
+            width={"80px"}
+            height={"80px"}
           />
         </Grid>
         <Grid item>
-          <ItemSlot
+          <ItemSlotWrapper
             slotType="equipment"
             id="offHand"
-            sx={{
-              width: "80px",
-              height: "80px",
-              backgroundImage: `url(${slot1}) !important`,
-              backgroundRepeat: "no-repeat !important",
-              backgroundSize: "100% 100% !important",
-            }}
-            children={getEquipmentChildren("offHand")}
+            img={slot1}
+            width={"80px"}
+            height={"80px"}
           />
         </Grid>
       </Grid>
       <Grid container item justifyContent={"center"} spacing={2}>
         <Grid item>
-          <ItemSlot
+          <ItemSlotWrapper
             slotType="equipment"
             id="mainHandRing"
-            sx={{
-              width: "38px",
-              height: "38px",
-              backgroundImage: `url(${slot2}) !important`,
-              backgroundRepeat: "no-repeat !important",
-              backgroundSize: "100% 100% !important",
-            }}
-            children={getEquipmentChildren("mainHandRing")}
+            img={slot2}
+            width={"38px"}
+            height={"838px0px"}
           />
         </Grid>
         <Grid item>
-          <ItemSlot
+          <ItemSlotWrapper
             slotType="equipment"
             id="legs"
-            sx={{
-              width: "80px",
-              height: "80px",
-              backgroundImage: `url(${slot1}) !important`,
-              backgroundRepeat: "no-repeat !important",
-              backgroundSize: "100% 100% !important",
-            }}
-            children={getEquipmentChildren("legs")}
+            img={slot1}
+            width={"80px"}
+            height={"80px"}
           />
         </Grid>
         <Grid item>
-          <ItemSlot
+          <ItemSlotWrapper
             slotType="equipment"
             id="offHandRing"
-            sx={{
-              width: "38px",
-              height: "38px",
-              backgroundImage: `url(${slot2}) !important`,
-              backgroundRepeat: "no-repeat !important",
-              backgroundSize: "100% 100% !important",
-            }}
-            children={getEquipmentChildren("offHandRing")}
+            img={slot2}
+            width={"38px"}
+            height={"838px0px"}
           />
         </Grid>
       </Grid>
@@ -146,16 +139,12 @@ const CharacterInventory = () => {
         {character?.inventory?.map((inv) => {
           return (
             <Grid item xs={1.25} key={inv?.id}>
-              <ItemSlot
-                slotType={"inventory"}
+              <ItemSlotWrapper
+                slotType="inventory"
                 id={inv?.id}
-                sx={{
-                  width: "100%",
-                  height: "38px",
-                  backgroundImage: `url(${slot2}) !important`,
-                  backgroundRepeat: "no-repeat !important",
-                  backgroundSize: "100% 100% !important",
-                }}
+                img={slot2}
+                height={"38px"}
+                width={"100%"}
                 children={[
                   ...(inv?.item
                     ? [
@@ -168,7 +157,7 @@ const CharacterInventory = () => {
                       ]
                     : []),
                 ]}
-              ></ItemSlot>
+              />
             </Grid>
           );
         })}

@@ -3,8 +3,15 @@ import { Box } from "@mui/material";
 import { useDrop } from "react-dnd";
 import { useMoveItemFunction } from "../hooks/useMoveItemFunction";
 
-const ItemSlot = ({ sx, slotType, id = undefined, children = [] }) => {
-  const { moveItemFunction } = useMoveItemFunction();
+const ItemSlot = ({
+  sx,
+  slotType,
+  id = undefined,
+  children = [],
+  character,
+  setCharacter,
+}) => {
+  const { moveItemFunction } = useMoveItemFunction({ character, setCharacter });
 
   const moveItem = (it) => {
     moveItemFunction(it?.slotId, it?.item, id);

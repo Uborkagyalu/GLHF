@@ -1,10 +1,9 @@
-import { useContext } from "react";
-import { CharacterContext } from "../providers/characterProvider";
-
-export const useMoveItemFunction = () => {
-  const { character, setCharacter } = useContext(CharacterContext);
-
+export const useMoveItemFunction = ({ character, setCharacter }) => {
   const moveItemFunction = (fromId, what, toId) => {
+    console.log(fromId);
+    console.log(what);
+    console.log(toId);
+
     const inventoryMap = character?.inventory?.map((inv) => {
       if (inv?.id === fromId) return { ...inv, item: null };
       if (inv?.id === toId) return { ...inv, item: what };
@@ -16,6 +15,10 @@ export const useMoveItemFunction = () => {
       if (slot?.id === toId) return { ...slot, item: what };
       return slot;
     });
+
+    console.log(character);
+    console.log(inventoryMap);
+    console.log(equipmentMap);
 
     setCharacter({
       ...character,
