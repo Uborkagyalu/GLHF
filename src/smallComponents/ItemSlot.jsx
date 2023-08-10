@@ -2,6 +2,7 @@ import React from "react";
 import { Box } from "@mui/material";
 import { useDrop } from "react-dnd";
 import { useMoveItemFunction } from "../hooks/useMoveItemFunction";
+import { inventoryItemTypes } from "../Constants/InventoryItemTypes";
 
 const ItemSlot = ({
   sx,
@@ -19,7 +20,7 @@ const ItemSlot = ({
 
   const [{ isOver }, drop] = useDrop(
     () => ({
-      accept: "item",
+      accept: inventoryItemTypes?.[slotType === "inventory" ? slotType : id],
       drop: (dropped) => {
         moveItem(dropped);
       },

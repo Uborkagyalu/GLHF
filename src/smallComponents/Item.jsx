@@ -3,10 +3,9 @@ import { Box } from "@mui/material";
 import { useDrag } from "react-dnd";
 
 const Item = ({ item, slotType, slotId }) => {
-  const img = require("../img/Items/" + item?.imgUrl);
-
+  
   const [{ isDragging }, drag] = useDrag(() => ({
-    type: "item",
+    type: item?.type,
     item: { item: { ...item }, slotId },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
@@ -27,7 +26,7 @@ const Item = ({ item, slotType, slotId }) => {
         padding: "10%",
       }}
       component={"img"}
-      src={img}
+      src={require("../img/items/"+item?.imgUrl)}
     />
   );
 };

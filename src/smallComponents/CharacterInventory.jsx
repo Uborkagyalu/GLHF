@@ -113,7 +113,7 @@ const CharacterInventory = () => {
             id="mainHandRing"
             img={slot2}
             width={"38px"}
-            height={"838px0px"}
+            height={"38px"}
           />
         </Grid>
         <Grid item>
@@ -131,7 +131,7 @@ const CharacterInventory = () => {
             id="offHandRing"
             img={slot2}
             width={"38px"}
-            height={"838px0px"}
+            height={"38px"}
           />
         </Grid>
       </Grid>

@@ -14,7 +14,7 @@ const Layout = ({ main }) => {
         item
         sx={{
           bgcolor: "red",
-          height: layoutConstants()?.topBarHeight,
+          height: layoutConstants?.topBarHeight,
           position: "absolute",
           width: "100vw",
         }}
@@ -25,16 +25,16 @@ const Layout = ({ main }) => {
         xs={12}
         sx={{
           height: "100vh",
-          paddingTop: layoutConstants()?.topBarHeight,
+          paddingTop: layoutConstants?.topBarHeight,
         }}
       >
         <Grid
           item
           sx={{
-            width: layoutConstants()?.leftMenuWidth,
+            width: layoutConstants?.leftMenuWidth,
             position: "absolute",
           }}
-          style={{ height: `calc(100% - ${layoutConstants()?.topBarHeight}` }}
+          style={{ height: `calc(100% - ${layoutConstants?.topBarHeight}` }}
         >
           <LeftMenu />
         </Grid>
@@ -44,18 +44,18 @@ const Layout = ({ main }) => {
           sx={{
             height: "100%",
             padding: "10px 10px 10px 0",
-            backgroundColor: '#212121',
-            color: 'white'
+            backgroundColor: "#212121",
+            color: "white",
             // backgroundImage: `url(${paperBackground}) !important`,
             // backgroundRepeat: "no-repeat !important",
             // backgroundSize: "100% 100% !important",
           }}
           style={{
-            paddingLeft: `calc(${layoutConstants()?.leftMenuWidth} + 10px)`,
+            paddingLeft: `calc(${layoutConstants?.leftMenuWidth} + 10px)`,
           }}
         >
-          {main === navigationConstants()?.character && <CharacterPanel />}
-          {main === navigationConstants()?.world && <World />}
+          {main === navigationConstants?.character && <CharacterPanel />}
+          {main === navigationConstants?.world && <World />}
         </Grid>
       </Grid>
     </Grid>

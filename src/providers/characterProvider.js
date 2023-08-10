@@ -1,5 +1,6 @@
 import React, { createContext } from "react";
 import { characterStatConstants } from "../Constants/CharacterStatConstants";
+import { inventoryItemTypes } from "../Constants/InventoryItemTypes";
 
 const defaultValues = {
   name: "Bélabácsi",
@@ -8,10 +9,10 @@ const defaultValues = {
   level: 1,
   totalXp: 105,
   stats: [
-    { name: characterStatConstants()?.life, min: 0, max: 10, current: 4 },
-    { name: characterStatConstants()?.mana, min: 0, max: 100, current: 6 },
+    { name: characterStatConstants?.life, min: 0, max: 10, current: 4 },
+    { name: characterStatConstants?.mana, min: 0, max: 100, current: 6 },
     {
-      name: characterStatConstants()?.stamina,
+      name: characterStatConstants?.stamina,
       min: 0,
       max: 100,
       current: 11,
@@ -19,8 +20,24 @@ const defaultValues = {
   ],
   inventory: [
     { id: 1, item: null },
-    { id: 2, item: { id: 200, name: "Sword", imgUrl: "minus.png" } },
-    { id: 3, item: null },
+    {
+      id: 2,
+      item: {
+        id: 200,
+        name: "Sword",
+        imgUrl: "minus.png",
+        type: inventoryItemTypes?.mainHand,
+      },
+    },
+    {
+      id: 3,
+      item: {
+        id: 201,
+        name: "Sword2",
+        imgUrl: "arrow.png",
+        type: inventoryItemTypes?.mainHand,
+      },
+    },
     { id: 4, item: null },
     { id: 5, item: null },
     { id: 6, item: null },

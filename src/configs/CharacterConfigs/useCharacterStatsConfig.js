@@ -14,20 +14,20 @@ export const useCharacterStatsConfig = ({ character = {} }) => {
   return [
     {
       id: 1,
-      text: characterStatConstants()?.life,
-      ...getStatData(characterStatConstants()?.life),
+      text: characterStatConstants?.life,
+      ...getStatData(characterStatConstants?.life),
       color: "red",
     },
     {
       id: 2,
-      text: characterStatConstants()?.mana,
-      ...getStatData(characterStatConstants()?.mana),
+      text: characterStatConstants?.mana,
+      ...getStatData(characterStatConstants?.mana),
       color: "blue",
     },
     {
       id: 3,
-      text: characterStatConstants()?.stamina,
-      ...getStatData(characterStatConstants()?.stamina),
+      text: characterStatConstants?.stamina,
+      ...getStatData(characterStatConstants?.stamina),
       color: "yellow",
     },
   ];
