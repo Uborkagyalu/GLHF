@@ -24,10 +24,10 @@ const CharacterPanel = () => {
         width: "calc(100% - 10px)",
         margin: "10px",
         boxShadow: `
-        inset #786e59 0 0 0 5px,
-        inset #968a6f 0 0 0 1px,
-        inset #ab9d7e 0 0 0 10px
-       `,
+          inset #786e59 0 0 0 5px,
+          inset #968a6f 0 0 0 1px,
+          inset #ab9d7e 0 0 0 10px
+        `,
       }}
     >
       <Grid item xs={12}>
@@ -68,10 +68,10 @@ const CharacterPanel = () => {
           xs={11}
           sx={{
             boxShadow: `
-        inset #786e59 0 0 0 5px,
-        inset #968a6f 0 0 0 1px,
-        inset #ab9d7e 0 0 0 10px
-       `,
+              inset #786e59 0 0 0 5px,
+              inset #968a6f 0 0 0 1px,
+              inset #ab9d7e 0 0 0 10px
+            `,
           }}
           padding={"2px"}
         >
@@ -89,14 +89,14 @@ const CharacterPanel = () => {
           xs={11}
           sx={{
             boxShadow: `
-        inset #786e59 0 0 0 5px,
-        inset #968a6f 0 0 0 1px,
-        inset #ab9d7e 0 0 0 10px
-       `,
+              inset #786e59 0 0 0 5px,
+              inset #968a6f 0 0 0 1px,
+              inset #ab9d7e 0 0 0 10px
+            `,
           }}
           padding={"2px"}
         >
-          <CharacterPortrait />
+          {/* <CharacterPortrait /> */}
           <Grid
             item
             container
