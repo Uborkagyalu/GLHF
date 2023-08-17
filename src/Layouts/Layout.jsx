@@ -13,7 +13,7 @@ const Layout = ({ main }) => {
       <Grid
         item
         sx={{
-          bgcolor: "red",
+          bgcolor: "black",
           height: layoutConstants?.topBarHeight,
           position: "absolute",
           width: "100vw",
@@ -44,8 +44,8 @@ const Layout = ({ main }) => {
           sx={{
             height: "100%",
             padding: "10px 10px 10px 0",
-            backgroundColor: "#212121",
             color: "white",
+            backgroundColor: "#212121",
             // backgroundImage: `url(${paperBackground}) !important`,
             // backgroundRepeat: "no-repeat !important",
             // backgroundSize: "100% 100% !important",
