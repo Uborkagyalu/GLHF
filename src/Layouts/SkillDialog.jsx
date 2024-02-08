@@ -4,6 +4,7 @@ import { useMainSkillTreeConfig } from "../configs/SkillTreeConfigs/useMainSkill
 import SkillInfoBox from "../smallComponents/SkillInfoBox";
 import SkillSlot from "../smallComponents/SkillSlot";
 import SkillTreeBox from "./SkillTreeBox";
+import SkillTreeHexa from "./SkillTreeHexa";
 
 const SkillDialog = ({ open, handleClose, skills, skillPoints }) => {
   console.log(skills);
@@ -17,10 +18,11 @@ const SkillDialog = ({ open, handleClose, skills, skillPoints }) => {
     <Dialog open={open} onClose={handleClose} fullWidth maxWidth="xl">
       <DialogContent
         sx={{
-          height: "80vh",
+          width: "1500px",
+          height: "800px",
           backgroundColor: "#212121",
           color: "white",
-          padding: "15px",
+          padding: "18px",
           boxShadow: `
             inset #786e59 0 0 0 5px,
             inset #968a6f 0 0 0 1px,
@@ -41,7 +43,8 @@ const SkillDialog = ({ open, handleClose, skills, skillPoints }) => {
             selectedSkill={selectedSkill}
           />
           <SkillTreeBox>
-            {skillTree?.map((tree) => (
+          <SkillTreeHexa />
+          {/* {skillTree?.map((tree) => (
               <Grid
                 item
                 container
@@ -72,7 +75,7 @@ const SkillDialog = ({ open, handleClose, skills, skillPoints }) => {
                   </Grid>
                 ))}
               </Grid>
-            ))}
+            ))} */}
           </SkillTreeBox>
         </div>
       </DialogContent>
