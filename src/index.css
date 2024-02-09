@@ -42,7 +42,7 @@ code {
   font-size: 0;
 }
 
-.hexaContainer div {
+.hexaContainer > div {
   width: var(--s);
   margin: var(--m);
   height: calc(var(--s) * 1.1547);
@@ -65,4 +65,31 @@ code {
     #0000 0 calc(var(--f) - 3px),
     #000 0 var(--f)
   );
+}
+
+.connectionHighlight {
+  background-color: rgb(37, 117, 155);
+}
+
+.requirementHighlight {
+  background-color: rgb(160, 49, 49);
+}
+
+.hexaImgContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+}
+
+.hexaImgContainerBox {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.hexaSkillActive {
+  background-color: rgb(173, 158, 158);
 }

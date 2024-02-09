@@ -3,18 +3,23 @@ import { Box, Tooltip } from "@mui/material";
 
 const SkillSlot = ({ skill, setSelectedSkill }) => {
   return (
-    <Tooltip title={skill?.name}>
-      <Box
-        sx={{
-          width: "38px",
-          height: "38px",
-          cursor: "pointer",
-        }}
-        component={"img"}
-        src={require("../img/skills/" + skill?.imgUrl)}
-        onClick={() => setSelectedSkill(skill)}
-      />
-    </Tooltip>
+    <div className={"hexaImgContainerBox"}>
+      <div className={"hexaImgContainer"}>
+        {skill?.imgUrl && (
+          <Tooltip title={skill?.name}>
+            <Box
+              sx={{
+                width: "80%",
+                display: "block",
+              }}
+              component={"img"}
+              src={require("../img/skills/" + skill.imgUrl)}
+              onClick={() => setSelectedSkill(skill)}
+            />
+          </Tooltip>
+        )}
+      </div>
+    </div>
   );
 };
 

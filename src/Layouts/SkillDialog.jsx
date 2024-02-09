@@ -11,8 +11,7 @@ const SkillDialog = ({ open, handleClose, skills, skillPoints }) => {
   console.log(skillPoints);
 
   const [selectedSkill, setSelectedSkill] = React.useState(null);
-
-  const skillTree = useMainSkillTreeConfig();
+  const [moving, setMoving] = React.useState(false);
 
   return (
     <Dialog open={open} onClose={handleClose} fullWidth maxWidth="xl">
@@ -42,9 +41,12 @@ const SkillDialog = ({ open, handleClose, skills, skillPoints }) => {
             skillPoints={skillPoints}
             selectedSkill={selectedSkill}
           />
-          <SkillTreeBox>
-          <SkillTreeHexa />
-          {/* {skillTree?.map((tree) => (
+          <SkillTreeBox moving={moving} setMoving={setMoving}>
+            <SkillTreeHexa
+              moving={moving}
+              setSelectedSkill={setSelectedSkill}
+            />
+            {/* {skillTree?.map((tree) => (
               <Grid
                 item
                 container

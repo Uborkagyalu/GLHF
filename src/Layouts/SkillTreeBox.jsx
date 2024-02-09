@@ -1,10 +1,9 @@
 import { Grid } from "@mui/material";
 import React from "react";
 
-const SkillTreeBox = ({ children }) => {
+const SkillTreeBox = ({ children, moving, setMoving }) => {
   const skillTreeBox = React.useRef(null);
 
-  const [moving, setMoving] = React.useState(false);
   const [left, setLeft] = React.useState(0);
   const [top, setTop] = React.useState(0);
 
@@ -54,7 +53,7 @@ const SkillTreeBox = ({ children }) => {
         position: "absolute",
         left: left,
         top: top,
-        cursor: "move",
+        cursor: moving ? "move" : "pointer",
       }}
       onMouseDown={onMouseDown}
       onMouseUp={onMouseUp}

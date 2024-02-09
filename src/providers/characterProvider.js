@@ -19,7 +19,7 @@ const defaultValues = {
     },
   ],
   skillPoints: 0,
-  skills: [],
+  skills: ["hexa191"],
   inventory: [
     { id: 1, item: null },
     {
