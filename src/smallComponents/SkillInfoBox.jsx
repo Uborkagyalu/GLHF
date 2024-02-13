@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Box, Grid } from "@mui/material";
 import Text from "./Text";
+import { CharacterContext } from "../providers/characterProvider";
+import MenuButton from "./MenuButton";
 
-const SkillInfoBox = ({ skillPoints, selectedSkill }) => {
+const SkillInfoBox = ({ skills, skillPoints, selectedSkill }) => {
+  const { addNewSkill } = useContext(CharacterContext);
   return (
     <Box
       sx={{
@@ -15,13 +18,27 @@ const SkillInfoBox = ({ skillPoints, selectedSkill }) => {
         zIndex: 1,
       }}
     >
-      <Grid container>
-        <Grid item xs={12}>
-          <Text>{`Skillpoints: ${skillPoints}`}</Text>
+      <Grid container direction={"column"}>
+        <Grid item>
+          <Text variant={"h4"}>{`Skillpoints: ${skillPoints}`}</Text>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item alignSelf={"center"}>
           <Text>{selectedSkill?.name}</Text>
         </Grid>
+        <Grid item>
+          <Text>{selectedSkill?.description}</Text>
+        </Grid>
+        {selectedSkill && !skills.includes(selectedSkill.skillId) && (
+          <Grid item alignSelf={"center"}>
+            <MenuButton
+              onClick={() => addNewSkill(selectedSkill.skillId)}
+              sx={{ width: "150px !important", height: "30px !important" }}
+              disabled={skillPoints === 0}
+            >
+              Learn
+            </MenuButton>
+          </Grid>
+        )}
       </Grid>
     </Box>
   );

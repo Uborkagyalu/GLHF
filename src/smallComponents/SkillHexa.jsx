@@ -6,7 +6,7 @@ import SkillSlot from "./SkillSlot";
 
 const getHexaParams = (i) => {
   const borderHexas = getBorderHexas();
-  if (borderHexas.includes(i)) return { style: { backgroundColor: "red" } };
+  if (borderHexas.includes(i)) return { style: { backgroundColor: "black" } };
   return { style: {} };
 };
 

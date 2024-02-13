@@ -67,12 +67,7 @@ const CharacterPanel = () => {
             <Grid item>
               <IconButton
                 onClick={() => {
-                  openSkillDialog({
-                    data: {
-                      skills: character?.skills || [],
-                      skillPoints: character?.skillPoints || 0,
-                    },
-                  });
+                  openSkillDialog();
                 }}
               >
                 <Box

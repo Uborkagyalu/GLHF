@@ -1,14 +1,12 @@
 import { Dialog, DialogContent, Grid } from "@mui/material";
-import React from "react";
-import { useMainSkillTreeConfig } from "../configs/SkillTreeConfigs/useMainSkillTreeConfig";
+import React, { useContext } from "react";
+import { CharacterContext } from "../providers/characterProvider";
 import SkillInfoBox from "../smallComponents/SkillInfoBox";
-import SkillSlot from "../smallComponents/SkillSlot";
 import SkillTreeBox from "./SkillTreeBox";
 import SkillTreeHexa from "./SkillTreeHexa";
 
-const SkillDialog = ({ open, handleClose, skills, skillPoints }) => {
-  console.log(skills);
-  console.log(skillPoints);
+const SkillDialog = ({ open, handleClose }) => {
+  const { character } = useContext(CharacterContext);
 
   const [selectedSkill, setSelectedSkill] = React.useState(null);
   const [moving, setMoving] = React.useState(false);
@@ -38,7 +36,8 @@ const SkillDialog = ({ open, handleClose, skills, skillPoints }) => {
           }}
         >
           <SkillInfoBox
-            skillPoints={skillPoints}
+            skills={character.skills}
+            skillPoints={character.skillPoints}
             selectedSkill={selectedSkill}
           />
           <SkillTreeBox moving={moving} setMoving={setMoving}>
@@ -46,38 +45,6 @@ const SkillDialog = ({ open, handleClose, skills, skillPoints }) => {
               moving={moving}
               setSelectedSkill={setSelectedSkill}
             />
-            {/* {skillTree?.map((tree) => (
-              <Grid
-                item
-                container
-                sx={{
-                  backgroundColor: tree?.color,
-                  width: "50%",
-                  height: "50%",
-                  padding: "20px",
-                }}
-                // @ts-ignore
-                direction={tree?.colDirection}
-              >
-                {tree?.skills?.map((col) => (
-                  <Grid
-                    item
-                    container
-                    // @ts-ignore
-                    direction={tree?.rowDirection}
-                  >
-                    {col?.colSkills?.map((skill) => (
-                      <Grid item sx={{ margin: "20px" }}>
-                        <SkillSlot
-                          skill={skill}
-                          setSelectedSkill={setSelectedSkill}
-                        />
-                      </Grid>
-                    ))}
-                  </Grid>
-                ))}
-              </Grid>
-            ))} */}
           </SkillTreeBox>
         </div>
       </DialogContent>

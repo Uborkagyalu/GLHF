@@ -4,7 +4,10 @@ import { Box, Tooltip } from "@mui/material";
 const SkillSlot = ({ skill, setSelectedSkill }) => {
   return (
     <div className={"hexaImgContainerBox"}>
-      <div className={"hexaImgContainer"}>
+      <div
+        className={"hexaImgContainer"}
+        onClick={() => setSelectedSkill(skill)}
+      >
         {skill?.imgUrl && (
           <Tooltip title={skill?.name}>
             <Box
@@ -14,7 +17,6 @@ const SkillSlot = ({ skill, setSelectedSkill }) => {
               }}
               component={"img"}
               src={require("../img/skills/" + skill.imgUrl)}
-              onClick={() => setSelectedSkill(skill)}
             />
           </Tooltip>
         )}

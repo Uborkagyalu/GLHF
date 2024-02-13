@@ -6,7 +6,7 @@ const getHexas = () => {
   for (let i = 0; i <= 530; i++) {
     array[i] = {
       index: i + 1,
-      skillId: `hexa${i + 1}`,
+      skillId: i + 1,
     };
   }
   return array;

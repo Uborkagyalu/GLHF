@@ -34,12 +34,12 @@ const StyledMenuButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-export default function MenuButton({ children, ...props }) {
+export default function MenuButton({ children, sx, ...props }) {
   return (
     <StyledMenuButton
       {...props}
       disableRipple
-      sx={{ color: "white", height: "50px" }}
+      sx={{ color: "white", height: "50px", ...sx }}
     >
       {children}
     </StyledMenuButton>

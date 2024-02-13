@@ -18,8 +18,8 @@ const defaultValues = {
       current: 11,
     },
   ],
-  skillPoints: 0,
-  skills: ["hexa191"],
+  skillPoints: 1,
+  skills: [191],
   inventory: [
     { id: 1, item: null },
     {
@@ -72,11 +72,31 @@ export const CharacterContext = createContext(defaultValues);
 const CharacterProvider = (props) => {
   const [character, setCharacter] = React.useState(defaultValues);
 
+  const addNewSkillPoint = () => {
+    const newSkillPoints = character.skillPoints + 1;
+    setCharacter({ ...character, skillPoints: newSkillPoints });
+  };
+
+  const addNewSkill = (skillId) => {
+    if (!character.skills.includes(skillId) && character.skillPoints > 0) {
+      const newSkillPointSet = [...character.skills];
+      newSkillPointSet.push(skillId);
+      const newSkillPoints = character.skillPoints - 1;
+      setCharacter({
+        ...character,
+        skills: newSkillPointSet,
+        skillPoints: newSkillPoints,
+      });
+    }
+  };
+
   return (
     <CharacterContext.Provider
       value={{
         character,
         setCharacter,
+        addNewSkillPoint,
+        addNewSkill,
       }}
       {...props}
     >
