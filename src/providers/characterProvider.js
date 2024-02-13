@@ -18,8 +18,8 @@ const defaultValues = {
       current: 11,
     },
   ],
-  skillPoints: 1,
-  skills: [191],
+  skillPoints: 2,
+  skills: [],
   inventory: [
     { id: 1, item: null },
     {

@@ -12,7 +12,7 @@ const SkillSlot = ({ skill, setSelectedSkill }) => {
           <Tooltip title={skill?.name}>
             <Box
               sx={{
-                width: "80%",
+                width: "65%",
                 display: "block",
               }}
               component={"img"}

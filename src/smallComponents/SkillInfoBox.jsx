@@ -6,6 +6,16 @@ import MenuButton from "./MenuButton";
 
 const SkillInfoBox = ({ skills, skillPoints, selectedSkill }) => {
   const { addNewSkill } = useContext(CharacterContext);
+
+  const skillsIncludeAllReq = () => {
+    const reqs = selectedSkill.req(selectedSkill.skillId);
+    let valid = true;
+    reqs.forEach((req) => {
+      if (!skills.includes(req)) valid = false;
+    });
+    return valid;
+  };
+
   return (
     <Box
       sx={{
@@ -28,17 +38,19 @@ const SkillInfoBox = ({ skills, skillPoints, selectedSkill }) => {
         <Grid item>
           <Text>{selectedSkill?.description}</Text>
         </Grid>
-        {selectedSkill && !skills.includes(selectedSkill.skillId) && (
-          <Grid item alignSelf={"center"}>
-            <MenuButton
-              onClick={() => addNewSkill(selectedSkill.skillId)}
-              sx={{ width: "150px !important", height: "30px !important" }}
-              disabled={skillPoints === 0}
-            >
-              Learn
-            </MenuButton>
-          </Grid>
-        )}
+        {selectedSkill &&
+          !skills.includes(selectedSkill.skillId) &&
+          skillsIncludeAllReq() && (
+            <Grid item alignSelf={"center"}>
+              <MenuButton
+                onClick={() => addNewSkill(selectedSkill.skillId)}
+                sx={{ width: "150px !important", height: "30px !important" }}
+                disabled={skillPoints === 0}
+              >
+                Learn
+              </MenuButton>
+            </Grid>
+          )}
       </Grid>
     </Box>
   );

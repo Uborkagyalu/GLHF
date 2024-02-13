@@ -67,6 +67,10 @@ code {
   );
 }
 
+.hexaSkillCanBeActive {
+  background-color: rgb(85, 84, 84);
+}
+
 .connectionHighlight {
   background-color: rgb(37, 117, 155);
 }
@@ -91,5 +95,5 @@ code {
 }
 
 .hexaSkillActive {
-  background-color: rgb(173, 158, 158);
+  background-color: rgb(197, 179, 179);
 }

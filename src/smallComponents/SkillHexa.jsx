@@ -26,6 +26,16 @@ const SkillHexa = ({
   const config = useMainHexaSkillTreeConfig();
   const hexaConfig = config.find((conf) => conf.skillId === index);
 
+  const skillsIncludeAllReq = () => {
+    if (!hexaConfig?.req) return false;
+    const reqs = hexaConfig.req(hexaConfig.skillId);
+    let valid = true;
+    reqs.forEach((req) => {
+      if (!character.skills.includes(req)) valid = false;
+    });
+    return valid;
+  };
+
   return (
     <div
       key={skillId}
@@ -33,7 +43,7 @@ const SkillHexa = ({
         ...params.style,
         position: "relative",
       }}
-      className={`hexa ${
+      className={`hexa ${skillsIncludeAllReq() ? "hexaSkillCanBeActive" : ""} ${
         connections?.includes(index) ? "connectionHighlight" : ""
       } ${requirements?.includes(index) ? "requirementHighlight" : ""} ${
         character.skills?.includes(skillId) ? "hexaSkillActive" : ""
