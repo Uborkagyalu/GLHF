@@ -1,7 +1,7 @@
-import { Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import React from "react";
 import { useWorldMapPointsConfig } from "../configs/MenuConfigs/useWorldMapPointsConfig";
-import world from "../img/world.jpg";
+import world from "../img/world2.jpg";
 import WorldCursorMenu from "../smallComponents/WorldCursorMenu";
 
 const World = () => {
@@ -18,7 +18,12 @@ const World = () => {
 
   const mapPointClickHandler = (e, point) => {
     e.stopPropagation();
-    setCursorMenu({ open: true, top: e.clientY + 10, left: e.clientX + 20, point: point });
+    setCursorMenu({
+      open: true,
+      top: e.clientY + 10,
+      left: e.clientX + 20,
+      point: point,
+    });
   };
 
   const worldMapPoints = useWorldMapPointsConfig();
@@ -44,18 +49,29 @@ const World = () => {
         onClick={closeMenu}
       >
         {worldMapPoints?.map((point) => (
-          <Grid
+          <Box
             key={point?.id}
             className={"mapPoint"}
-            onClick={(e) => mapPointClickHandler(e, point)}
             sx={{
-              width: point?.sx?.width,
-              height: point?.sx?.height,
-              left: point?.sx?.left,
-              top: point?.sx?.top,
-              borderRadius: "40%",
+              display: "block",
+              borderRadius: "10%",
+              ...point?.sx,
             }}
+            component={"img"}
+            src={require("../img/" + point.imgUrl)}
           />
+          // <Grid
+          //   key={point?.id}
+          //   className={"mapPoint"}
+          //   onClick={(e) => mapPointClickHandler(e, point)}
+          //   sx={{
+          //     width: point?.sx?.width,
+          //     height: point?.sx?.height,
+          //     left: point?.sx?.left,
+          //     top: point?.sx?.top,
+          //     borderRadius: "40%",
+          //   }}
+          // />
         ))}
       </Grid>
       <WorldCursorMenu cursorMenu={cursorMenu} />
